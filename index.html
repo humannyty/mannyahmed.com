@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manny Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee6; --ink:#23262b; --mute:#6e6b66; --rule:rgba(35,38,43,.14);
+    --teal:#2f4a52; --rose:#c99a8e; --ochre:#c9a46a; --slate:#8fa1aa;
+    --display:"Cormorant Garamond", Georgia, serif; --sans:"Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper)}
+  body{font-family:var(--sans);font-weight:300;color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .small{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:400}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;height:100vh;min-height:720px;max-height:980px;overflow:hidden;background:#efe6da}
+  .hero svg.scene{position:absolute;inset:0;width:100%;height:100%}
+  .hero .grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55}
+  .topbar{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:34px 56px;color:var(--ink);z-index:3}
+  .topbar nav{display:flex;gap:30px}
+  .topbar nav a{opacity:.75}
+  .topbar nav a:hover{opacity:1}
+  .hero .title{position:absolute;left:56px;top:23%;z-index:3;max-width:640px}
+  .hero .title .pun{color:var(--teal);opacity:.8}
+  .hero h1{font-family:var(--display);font-weight:300;font-size:120px;line-height:.9;letter-spacing:-.02em;margin-top:22px;color:var(--ink)}
+  .hero .line{font-family:var(--display);font-style:italic;font-size:30px;line-height:1.3;margin-top:30px;max-width:520px;color:#3a3d42}
+  .hero .scroll{position:absolute;left:56px;bottom:34px;z-index:3;color:#f3eee6;opacity:.85}
+
+  /* ---------- body ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 56px}
+  .intro{padding:120px 0 100px;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+  .intro .facts{list-style:none;border-top:1px solid var(--rule)}
+  .intro .facts li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:20px}
+  .intro .facts li span:first-child{color:var(--mute)}
+  .intro .text p{font-size:19px}
+  .intro .text p.lead{font-family:var(--display);font-size:38px;line-height:1.2;font-weight:400;margin-bottom:28px;letter-spacing:-.005em}
+  .intro .text p+p{margin-top:16px}
+
+  h2{font-family:var(--display);font-weight:300;font-size:64px;line-height:1;letter-spacing:-.01em}
+  h2 em{font-style:italic;color:var(--teal)}
+  .sechead{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:48px}
+  .sechead p{max-width:440px;color:var(--mute)}
+
+  .building{padding:100px 0;border-top:1px solid var(--rule)}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{position:relative;padding:28px 26px 30px;min-height:250px;background:rgba(255,255,255,.35);border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column}
+  .card .wash{position:absolute;right:-56px;top:-56px;width:150px;height:150px;opacity:.5}
+  .card .small{color:var(--mute);position:relative}
+  .card h3{position:relative;font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin-top:auto;padding-top:60px}
+  .card p{position:relative;margin-top:10px;font-size:15px;color:#4c4e52;min-height:4.95em}
+  .building .note{margin-top:28px;color:var(--mute);font-size:15px}
+  .building .note a{border-bottom:1px solid var(--rule)}
+
+  .twocol{padding:100px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:80px}
+  .twocol h2{font-size:52px;margin-bottom:22px}
+  .twocol .blurb{color:#4c4e52;margin-bottom:28px;max-width:470px}
+  .entries{list-style:none;border-top:1px solid var(--rule)}
+  .entries li{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+  .entries .t{font-family:var(--display);font-size:25px;color:var(--mute)}
+  .entries .d{color:var(--mute)}
+  .more{display:inline-block;margin-top:22px;border-bottom:1px solid var(--rule);padding-bottom:2px}
+
+  .personal{padding:56px 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:30px}
+  .personal p{font-family:var(--display);font-size:26px;font-style:italic;color:#3a3d42}
+  .personal p a{border-bottom:1px solid var(--rule)}
+
+  .contact{position:relative;overflow:hidden;color:#f3eee6;background:var(--teal)}
+  .contact svg{position:absolute;inset:0;width:100%;height:100%}
+  .contact .wrap{position:relative;padding-top:110px;padding-bottom:60px}
+  .contact h2{font-size:84px;max-width:900px}
+  .contact h2 em{color:#e9cfa0}
+  .contact .links{display:flex;flex-wrap:wrap;gap:16px 44px;margin-top:48px;font-size:18px}
+  .contact .links a{border-bottom:1px solid rgba(243,238,230,.35);padding-bottom:2px}
+  .contact footer{display:flex;justify-content:space-between;margin-top:110px;padding-top:24px;border-top:1px solid rgba(243,238,230,.2);opacity:.75;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:760px){
+    .topbar{padding:22px 24px}
+    .topbar nav{gap:16px}
+    .topbar nav .hide-m{display:none}
+    .hero{height:844px;min-height:0}
+    .hero .title{left:24px;right:24px;top:118px}
+    .hero h1{font-size:72px}
+    .hero .line{font-size:24px;margin-top:22px}
+    .hero .scroll{left:24px}
+    .wrap{padding:0 24px}
+    .intro{grid-template-columns:1fr;gap:40px;padding:72px 0}
+    .intro .text{order:-1}
+    .intro .text p.lead{font-size:30px}
+    h2{font-size:46px}
+    .sechead{display:block}
+    .sechead p{margin-top:14px}
+    .cards{grid-template-columns:1fr}
+    .card{min-height:180px}
+    .card p{min-height:0}
+    .twocol{grid-template-columns:1fr;gap:64px;padding:72px 0}
+    .personal{display:block}
+    .contact h2{font-size:52px}
+  }
+
+  /* ---------- b2 ---------- */
+  .hero .title{top:15%}
+  .hero .line{max-width:600px}
+  .intro2{padding:110px 0 70px;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+  .intro2 .lead{font-family:var(--display);font-size:40px;line-height:1.18;font-weight:400;letter-spacing:-.005em}
+  .intro2 .text p{font-size:18.5px}
+  .intro2 .text p+p{margin-top:16px}
+
+  .index{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:30px}
+  .index a{position:relative;display:flex;flex-direction:column;padding:30px 28px 34px;min-height:250px;overflow:hidden;border-right:1px solid var(--rule);transition:background .3s}
+  .index a:last-child{border-right:0}
+  .index a:hover{background:rgba(255,255,255,.35)}
+  .index .wash{position:absolute;right:-48px;top:-48px;width:140px;height:140px;opacity:.45}
+  .index .n{font-family:var(--display);font-style:italic;font-size:22px;color:var(--mute);position:relative}
+  .index h3{font-family:var(--display);font-weight:400;font-size:36px;line-height:1.05;margin-top:auto;position:relative}
+  .index p{position:relative;margin-top:10px;font-size:15px;color:#4c4e52;max-width:230px;min-height:3.3em}
+
+  .pillar{display:grid;grid-template-columns:4fr 8fr;gap:80px;padding:90px 0;border-top:1px solid var(--rule);min-height:460px}
+  .pillar:first-of-type{border-top:0}
+  .pillar .side .n{font-family:var(--display);font-style:italic;font-size:22px;color:var(--mute)}
+  .pillar .side h2{margin-top:10px;font-size:60px}
+  .pillar .side .kicker{margin-top:18px;color:var(--mute)}
+  .pillar .body > p{font-size:18.5px;max-width:620px}
+  .pillar .body > p + p{margin-top:14px}
+  .pillar .body > p.big{font-family:var(--display);font-size:30px;line-height:1.25;font-weight:400;margin-bottom:22px}
+  .pillar .entries{margin-top:34px}
+  .pillar .entries .t{font-size:26px}
+  .products{margin-top:30px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--display);font-size:20px}
+  .products span.small{font-family:var(--sans);color:var(--mute);align-self:center;margin-right:6px}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+  .gallery figure{margin:0}
+  .gallery svg{display:block;width:100%;height:auto;aspect-ratio:4/3}
+  .gallery figure.tall{grid-row:span 2}
+  .gallery figure.tall svg{aspect-ratio:auto;height:100%;min-height:100%}
+  .gallery figcaption{margin-top:8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--mute)}
+  .gallery + .more{margin-top:30px}
+  .gallery figcaption i{font-family:var(--display);font-size:18px;color:#3a3d42;text-transform:none;letter-spacing:0}
+
+  @media (max-width:760px){
+    .intro2{grid-template-columns:1fr;gap:26px;padding:72px 0 44px}
+    .intro2 .lead{font-size:30px}
+    .index{grid-template-columns:1fr 1fr}
+    .index a{min-height:190px;padding:22px 18px 24px}
+    .index a:nth-child(2){border-right:0}
+    .index a:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+    .index h3{font-size:28px}
+    .index p{font-size:13.5px}
+    .pillar{grid-template-columns:1fr;gap:24px;padding:64px 0;min-height:0}
+    .pillar .side h2{font-size:46px}
+    .pillar .body > p.big{font-size:25px}
+    .gallery{grid-template-columns:1fr 1fr;gap:14px}
+    .gallery figcaption span.small{display:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- watercolour edge: wobble + soft bleed -->
+    <filter id="wc" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.6" result="b"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="pig"/>
+      <feColorMatrix in="pig" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.25" result="pigA"/>
+      <feComposite in="b" in2="pigA" operator="in" result="mottled"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="mottled"/></feMerge>
+    </filter>
+    <filter id="wc2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="21" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="60" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="10"/>
+    </filter>
+    <filter id="edge" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2"/>
+    </filter>
+    <filter id="wcs" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="10" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.4"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="grainf">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0.22 0"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe7dc"/>
+      <stop offset=".55" stop-color="#ecd9cc"/>
+      <stop offset="1" stop-color="#e3c3b4"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="hero">
+  <svg class="scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <!-- broad sky washes -->
+    <ellipse cx="1150" cy="220" rx="520" ry="200" fill="#e7c9b9" opacity=".55" filter="url(#wc2)"/>
+    <ellipse cx="300" cy="120" rx="460" ry="140" fill="#f4ede3" opacity=".7" filter="url(#wc2)"/>
+    <!-- sun -->
+    <circle cx="880" cy="490" r="190" fill="#e6c58f" opacity=".30" filter="url(#soft)"/>
+    <circle cx="880" cy="490" r="96" fill="#ddb479" opacity=".66" filter="url(#wcs)"/>
+    <circle cx="880" cy="490" r="96" fill="none" stroke="#b8864a" stroke-width="2.5" opacity=".3" filter="url(#wcs)"/>
+    <circle cx="862" cy="470" r="56" fill="#ead09e" opacity=".5" filter="url(#wc2)"/>
+    <!-- far range -->
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="#bcbdb9" opacity="1" filter="url(#wc)"/>
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- mid range -->
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="#b98d84" opacity=".72" filter="url(#wc)"/>
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- near ground -->
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="#3c565c" opacity=".9" filter="url(#wc)"/>
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="#2a3f45" opacity=".85" filter="url(#wc)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+
+    <!-- the thread: a chain of custody from a point of origin to the light -->
+    <g opacity=".9">
+      <path id="thread" d="M 612 732 C 720 650 820 580 872 446" fill="none" stroke="#f6efe3" stroke-width="1.1" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <circle cx="612" cy="732" r="4.2" fill="#f6efe3"/>
+      <circle cx="612" cy="732" r="11" fill="none" stroke="#f6efe3" stroke-width=".8" opacity=".7"/>
+    </g>
+    <rect y="860" width="1440" height="60" fill="#2a3f45"/>
+    <rect width="1440" height="900" filter="url(#grainf)" opacity=".9"/>
+  </svg>
+
+  <div class="topbar small">
+    <span>Manny Ahmed</span>
+    <nav>
+      <a href="#openorigins" class="hide-m">OpenOrigins</a>
+      <a href="#research" class="hide-m">Research</a>
+      <a href="#writing" class="hide-m">Writing</a>
+      <a href="#photography" class="hide-m">Photography</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="title">
+    <span class="small pun">hu&middot;manny&middot;ty</span>
+    <h1>Manny<br>Ahmed</h1>
+    <p class="line">I build a company, research distributed systems, write stories and take photographs. Not always in that order.</p>
+  </div>
+  <span class="scroll small">Founder &nbsp;&middot;&nbsp; Researcher &nbsp;&middot;&nbsp; Writer &nbsp;&middot;&nbsp; Photographer &nbsp;&middot;&nbsp; San Francisco</span>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="intro2" id="about">
+      <p class="lead">Four things, roughly equal parts. A company, a research problem, stories, and pictures.</p>
+      <div class="text">
+        <p>I'm Manny. I founded OpenOrigins in London in 2021 and still run it. Before that I did a PhD in computer science at Cambridge with Ross Anderson, and the research from it keeps going: I'm a visiting researcher there now, working on the ideas behind the Cambium network.</p>
+        <p>Away from the desk I write fiction and poetry, and I take photographs. I live in San Francisco.</p>
+      </div>
+    </section>
+
+    <nav class="index" aria-label="Sections">
+      <a href="#openorigins"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#d9ad6e" filter="url(#wc)"/></svg><span class="n">i.</span><h3>OpenOrigins</h3><p>The company I founded and run.</p></a>
+      <a href="#research"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#a9b4b6" filter="url(#wc)"/></svg><span class="n">ii.</span><h3>Cambium research</h3><p>Distributed systems, from a Cambridge PhD onwards.</p></a>
+      <a href="#writing"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#b98d84" filter="url(#wc)"/></svg><span class="n">iii.</span><h3>Writing</h3><p>Stories and poems.</p></a>
+      <a href="#photography"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#3c565c" filter="url(#wc)"/></svg><span class="n">iv.</span><h3>Photography</h3><p>Pictures, mostly of light.</p></a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <section class="pillar" id="openorigins">
+      <div class="side">
+        <span class="n">i.</span>
+        <h2>OpenOrigins</h2>
+        <p class="kicker small">Founder &amp; CEO &middot; Since 2021</p>
+      </div>
+      <div class="body">
+        <p class="big">Trust infrastructure for media and AI.</p>
+        <p>OpenOrigins builds cryptographic provenance: a verifiable record of where a photo, a video, an archive or an AI agent's work came from, made at the source. I run it with my co-founder and President, Ari Abelson.</p>
+        <div class="products"><span class="small">Products</span>Secure Source <span>&middot;</span> Archive Anchor <span>&middot;</span> Data licensing <span>&middot;</span> Tally</div>
+        <a class="more small" href="https://openorigins.com">openorigins.com</a>
+      </div>
+    </section>
+
+    <section class="pillar" id="research">
+      <div class="side">
+        <span class="n">ii.</span>
+        <h2>Cambium research</h2>
+        <p class="kicker small">Visiting researcher &middot; Cambridge</p>
+      </div>
+      <div class="body">
+        <p class="big">How do lots of computers agree on what happened, fairly and quickly?</p>
+        <p>My PhD at Cambridge, supervised by Ross Anderson, was on decentralised computer systems. Its consensus design became Cambium, the network OpenOrigins runs on. I still work on it. Also published as Mansoor Ahmed-Rengers.</p>
+        <ul class="entries">
+          <li><span class="t">Paper title</span><span class="d small">Venue &middot; Year</span></li>
+          <li><span class="t">Paper title</span><span class="d small">Venue &middot; Year</span></li>
+          <li><span class="t">Paper title</span><span class="d small">Venue &middot; Year</span></li>
+        </ul>
+        <a class="more small" href="#">Google Scholar</a>
+      </div>
+    </section>
+
+    <section class="pillar" id="writing">
+      <div class="side">
+        <span class="n">iii.</span>
+        <h2>Writing</h2>
+        <p class="kicker small">Fiction &middot; Poetry</p>
+      </div>
+      <div class="body">
+        <p class="big">Short fiction and poems, written slowly.</p>
+        <ul class="entries">
+          <li><span class="t">Story title</span><span class="d small">Short story &middot; Year</span></li>
+          <li><span class="t">Poem title</span><span class="d small">Poem &middot; Year</span></li>
+          <li><span class="t">Story title</span><span class="d small">Short story &middot; Year</span></li>
+          <li><span class="t">Poem title</span><span class="d small">Poem &middot; Year</span></li>
+        </ul>
+        <a class="more small" href="#">All writing</a>
+      </div>
+    </section>
+
+    <section class="pillar" id="photography">
+      <div class="side">
+        <span class="n">iv.</span>
+        <h2>Photography</h2>
+        <p class="kicker small">Selected frames</p>
+      </div>
+      <div class="body">
+        <div class="gallery">
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#e9dccb"/>
+            <ellipse cx="120" cy="84" rx="220" ry="48" fill="#c99a8e" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 165 C 100 141 220 180 440 153 L440 340 L-40 340Z" fill="#c99a8e" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 213 C 120 195 280 225 440 204 L440 340 L-40 340Z" fill="#5b6f73" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#5b6f73" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#e3e2dc"/>
+            <ellipse cx="180" cy="84" rx="220" ry="48" fill="#a9b4b6" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 189 C 100 165 220 204 440 177 L440 340 L-40 340Z" fill="#a9b4b6" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 237 C 120 219 280 249 440 228 L440 340 L-40 340Z" fill="#3c565c" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#3c565c" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#efe1c9"/>
+            <ellipse cx="240" cy="84" rx="220" ry="48" fill="#d9ad6e" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 213 C 100 189 220 228 440 201 L440 340 L-40 340Z" fill="#d9ad6e" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 261 C 120 243 280 273 440 252 L440 340 L-40 340Z" fill="#8a6a4f" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#8a6a4f" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#e6d6cf"/>
+            <ellipse cx="120" cy="84" rx="220" ry="48" fill="#b98d84" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 165 C 100 141 220 180 440 153 L440 340 L-40 340Z" fill="#b98d84" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 213 C 120 195 280 225 440 204 L440 340 L-40 340Z" fill="#4a4442" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#4a4442" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#dfe3df"/>
+            <ellipse cx="180" cy="84" rx="220" ry="48" fill="#8fa1aa" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 189 C 100 165 220 204 440 177 L440 340 L-40 340Z" fill="#8fa1aa" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 237 C 120 219 280 249 440 228 L440 340 L-40 340Z" fill="#2f4a52" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#2f4a52" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photograph placeholder">
+            <rect width="400" height="300" fill="#ece4d6"/>
+            <ellipse cx="240" cy="84" rx="220" ry="48" fill="#c9a46a" opacity=".35" filter="url(#wc2)"/>
+            <path d="M-40 213 C 100 189 220 228 440 201 L440 340 L-40 340Z" fill="#c9a46a" opacity=".75" filter="url(#wc)"/>
+            <path d="M-40 261 C 120 243 280 273 440 252 L440 340 L-40 340Z" fill="#3c565c" opacity=".8" filter="url(#wc)"/>
+            <rect width="400" height="300" filter="url(#grainf)" opacity=".7"/>
+            <text x="200" y="141" text-anchor="middle" fill="#3c565c" opacity=".55" font-family="Inter, sans-serif" font-size="11" letter-spacing="3">PHOTO</text>
+          </svg>
+          <figcaption class="small"><i>Photo title</i><span class="small">Place, Year</span></figcaption>
+        </figure>
+        </div>
+        <a class="more small" href="#">All photographs</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact" id="contact">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="1440" height="600" fill="#2f4a52"/>
+      <ellipse cx="1180" cy="140" rx="380" ry="170" fill="#3f5d64" opacity=".8" filter="url(#wc2)"/>
+      <ellipse cx="200" cy="520" rx="420" ry="140" fill="#26393f" opacity=".9" filter="url(#wc2)"/>
+      <circle cx="1210" cy="150" r="90" fill="#d9ad6e" opacity=".18" filter="url(#soft)"/>
+      <circle cx="1210" cy="150" r="40" fill="#d9ad6e" opacity=".4" filter="url(#wcs)"/>
+      <rect width="1440" height="600" filter="url(#grainf)" opacity=".6"/>
+    </svg>
+    <div class="wrap">
+      <h2>Say hello. <em>A real one.</em></h2>
+      <div class="links">
+        <a href="mailto:hello@mannyahmed.com">hello@mannyahmed.com</a>
+        <a href="https://x.com/hu_manny_ty">@hu_manny_ty</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Google Scholar</a>
+      </div>
+      <footer class="small">
+        <span>&copy; 2026 Manny Ahmed</span>
+        <span>Em dashes my own.</span>
+      </footer>
+    </div>
+  </section>
+</main>
+</body>
+</html>
