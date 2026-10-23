@@ -1,0 +1,14 @@
+---
+layout: layouts/inner.njk
+---
+<a class="back small" href="/photography/">&larr; All photographs</a>
+{% if content | trim %}<div class="prose" style="margin-bottom:50px">{{ content | safe }}</div>{% endif %}
+<div class="photos">
+{% for ph in photos %}{% if ph.image %}
+  <figure>
+    <img src="{{ ph.image }}" alt="{{ ph.alt or ph.caption or title }}" sizes="(max-width: 760px) 100vw, 560px">
+    {% if ph.caption or ph.place or ph.year %}<figcaption class="small"><i>{{ ph.caption }}</i><span>{{ ph.place }}{% if ph.place and ph.year %}, {% endif %}{{ ph.year }}</span></figcaption>{% endif %}
+  </figure>
+{% endif %}{% endfor %}
+</div>
+{% include "partials/follow.njk" %}

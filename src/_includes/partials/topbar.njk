@@ -1,0 +1,10 @@
+<div class="topbar small">
+  {% if inner %}<a class="home" href="/">{{ site.title }}</a>{% else %}<span>{{ site.title }}</span>{% endif %}
+  <nav>
+    <a href="/#openorigins" class="hide-m">OpenOrigins</a>
+    <a href="/#research" class="hide-m">Research</a>
+    <a href="{{ '/writing/' if inner else '#writing' }}" class="hide-m">Writing</a>
+    <a href="{{ '/photography/' if inner else '#photography' }}" class="hide-m">Photography</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>

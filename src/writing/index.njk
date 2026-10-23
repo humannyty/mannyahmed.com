@@ -1,0 +1,21 @@
+---
+layout: layouts/inner.njk
+title: Writing
+kicker: Fiction · Poetry · Essays
+sub: Short fiction and poems, written slowly. Some essays and notes too.
+permalink: /writing/
+---
+{% if collections.writing.length %}
+<ul class="listing">
+{% for post in collections.writing %}
+  <li><a href="{{ post.url }}">
+    <span class="t">{{ post.data.title }}</span>
+    <span class="d small">{{ post.data.kind }} &middot; {{ post.date | readableDate }}</span>
+    {% if post.data.summary %}<span class="s">{{ post.data.summary }}</span>{% endif %}
+  </a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p class="empty">First pieces coming soon.</p>
+{% endif %}
+{% include "partials/follow.njk" %}

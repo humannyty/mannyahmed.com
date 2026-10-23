@@ -1,0 +1,31 @@
+  <svg class="scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <!-- broad sky washes -->
+    <ellipse cx="1150" cy="220" rx="520" ry="200" fill="#e7c9b9" opacity=".55" filter="url(#wc2)"/>
+    <ellipse cx="300" cy="120" rx="460" ry="140" fill="#f4ede3" opacity=".7" filter="url(#wc2)"/>
+    <!-- sun -->
+    <circle cx="880" cy="490" r="190" fill="#e6c58f" opacity=".30" filter="url(#soft)"/>
+    <circle cx="880" cy="490" r="96" fill="#ddb479" opacity=".66" filter="url(#wcs)"/>
+    <circle cx="880" cy="490" r="96" fill="none" stroke="#b8864a" stroke-width="2.5" opacity=".3" filter="url(#wcs)"/>
+    <circle cx="862" cy="470" r="56" fill="#ead09e" opacity=".5" filter="url(#wc2)"/>
+    <!-- far range -->
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="#bcbdb9" opacity="1" filter="url(#wc)"/>
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- mid range -->
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="#b98d84" opacity=".72" filter="url(#wc)"/>
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- near ground -->
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="#3c565c" opacity=".9" filter="url(#wc)"/>
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="#2a3f45" opacity=".85" filter="url(#wc)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+
+    <!-- the thread: a chain of custody from a point of origin to the light -->
+    <g opacity=".9">
+      <path id="thread" d="M 612 732 C 720 650 820 580 872 446" fill="none" stroke="#f6efe3" stroke-width="1.1" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <circle cx="612" cy="732" r="4.2" fill="#f6efe3"/>
+      <circle cx="612" cy="732" r="11" fill="none" stroke="#f6efe3" stroke-width=".8" opacity=".7"/>
+    </g>
+    <rect y="860" width="1440" height="60" fill="#2a3f45"/>
+    <rect width="1440" height="900" filter="url(#grainf)" opacity=".9"/>
+  </svg>

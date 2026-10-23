@@ -1,0 +1,130 @@
+---
+layout: layouts/base.njk
+---
+<header class="hero">
+{% include "partials/hero-scene.njk" %}
+
+  {% include "partials/topbar.njk" %}
+
+  <div class="title">
+    <span class="small pun">hu&middot;manny&middot;ty</span>
+    <h1>Manny<br>Ahmed</h1>
+    <p class="line">{{ home.tagline }}</p>
+  </div>
+  <span class="scroll small">{{ home.roles | replace(" · ", " &nbsp;&middot;&nbsp; ") | safe }}</span>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="intro2" id="about">
+      <p class="lead">{{ home.lead }}</p>
+      <div class="text">
+        {{ home.about | md | safe }}
+      </div>
+    </section>
+
+    <nav class="index" aria-label="Sections">
+      <a href="#openorigins"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#d9ad6e" filter="url(#wc)"/></svg><span class="n">i.</span><h3>OpenOrigins</h3><p>The company I founded and run.</p></a>
+      <a href="#research"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#a9b4b6" filter="url(#wc)"/></svg><span class="n">ii.</span><h3>Cambium research</h3><p>Distributed systems, from a Cambridge PhD onwards.</p></a>
+      <a href="#writing"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#b98d84" filter="url(#wc)"/></svg><span class="n">iii.</span><h3>Writing</h3><p>Stories and poems.</p></a>
+      <a href="#photography"><svg class="wash" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#3c565c" filter="url(#wc)"/></svg><span class="n">iv.</span><h3>Photography</h3><p>Pictures, mostly of light.</p></a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <section class="pillar" id="openorigins">
+      <div class="side">
+        <span class="n">i.</span>
+        <h2>OpenOrigins</h2>
+        <p class="kicker small">{{ home.openorigins.kicker }}</p>
+      </div>
+      <div class="body">
+        <p class="big">{{ home.openorigins.big }}</p>
+        <p>{{ home.openorigins.text }}</p>
+        <div class="products"><span class="small">Products</span>{% for p in home.openorigins.products %}{{ p }}{% if not loop.last %} <span>&middot;</span> {% endif %}{% endfor %}</div>
+        <a class="more small" href="{{ home.openorigins.link }}">{{ home.openorigins.link_label }}</a>
+      </div>
+    </section>
+
+    <section class="pillar" id="research">
+      <div class="side">
+        <span class="n">ii.</span>
+        <h2>Cambium research</h2>
+        <p class="kicker small">{{ home.research.kicker }}</p>
+      </div>
+      <div class="body">
+        <p class="big">{{ home.research.big }}</p>
+        <p>{{ home.research.text }}</p>
+        <ul class="entries">
+          {% for p in research.papers %}<li><span class="t">{% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span><span class="d small">{{ p.venue }}{% if p.venue and p.year %} &middot; {% endif %}{{ p.year }}</span></li>
+          {% endfor %}
+        </ul>
+        {% if home.research.scholar_url %}<a class="more small" href="{{ home.research.scholar_url }}">Google Scholar</a>{% endif %}
+      </div>
+    </section>
+
+    <section class="pillar" id="writing">
+      <div class="side">
+        <span class="n">iii.</span>
+        <h2>Writing</h2>
+        <p class="kicker small">{{ home.writing.kicker }}</p>
+      </div>
+      <div class="body">
+        <p class="big">{{ home.writing.big }}</p>
+        {% if collections.writing.length %}
+        <ul class="entries">
+          {% for post in collections.writing | limit(4) %}<li><span class="t"><a href="{{ post.url }}">{{ post.data.title }}</a></span><span class="d small">{{ post.data.kind }} &middot; {{ post.date | year }}</span></li>
+          {% endfor %}
+        </ul>
+        <a class="more small" href="/writing/">All writing</a>
+        {% else %}
+        <p class="empty">First pieces coming soon.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="pillar" id="photography">
+      <div class="side">
+        <span class="n">iv.</span>
+        <h2>Photography</h2>
+        <p class="kicker small">{{ home.photography.kicker }}</p>
+      </div>
+      <div class="body">
+        {% if home.photography.big %}<p class="big">{{ home.photography.big }}</p>{% endif %}
+        <div class="gallery">
+        {% if collections.homePhotos.length %}
+          {% for ph in collections.homePhotos %}
+          <figure>
+            <a href="{{ ph.gallery.url }}"><img src="{{ ph.image }}" alt="{{ ph.alt or ph.caption or ph.gallery.data.title }}" sizes="(max-width: 760px) 50vw, 280px"></a>
+            <figcaption class="small"><i>{{ ph.caption or ph.gallery.data.title }}</i><span class="small">{{ ph.place or ph.gallery.data.place }}{% if (ph.place or ph.gallery.data.place) and (ph.year or ph.gallery.date) %}, {% endif %}{{ ph.year or (ph.gallery.date | year) }}</span></figcaption>
+          </figure>
+          {% endfor %}
+        {% else %}
+          {% include "partials/photo-placeholders.njk" %}
+        {% endif %}
+        </div>
+        <a class="more small" href="/photography/">All photographs</a>
+      </div>
+    </section>
+
+  {% set elsewhere_posts = elsewhere.posts | byDateDesc %}
+  {% if elsewhere_posts.length %}
+    <section class="pillar elsewhere" id="elsewhere">
+      <div class="side">
+        <span class="n">v.</span>
+        <h2>Elsewhere</h2>
+        <p class="kicker small">Recent posts</p>
+      </div>
+      <div class="body">
+        <ul class="entries">
+          {% for p in elsewhere_posts | limit(5) %}<li><span class="t"><a href="{{ p.url }}">{{ p.text }}</a></span><span class="d small">{{ p.platform }}{% if p.date %} &middot; {{ p.date | readableDate }}{% endif %}</span></li>
+          {% endfor %}
+        </ul>
+        {% if elsewhere_posts.length > 5 %}<a class="more small" href="/elsewhere/">Everything elsewhere</a>{% endif %}
+      </div>
+    </section>
+  {% endif %}
+  </div>
+
+  {% include "partials/contact.njk" %}
+</main>

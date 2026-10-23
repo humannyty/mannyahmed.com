@@ -1,0 +1,22 @@
+---
+layout: layouts/inner.njk
+title: Photography
+kicker: Galleries
+sub: Pictures, mostly of light.
+permalink: /photography/
+---
+{% if collections.galleries.length %}
+<div class="galleries">
+{% for g in collections.galleries %}
+  {% set cover = g.data.cover or (g.data.photos[0].image if g.data.photos and g.data.photos.length) %}
+  <a href="{{ g.url }}">
+    {% if cover %}<img src="{{ cover }}" alt="{{ g.data.title }}" sizes="(max-width: 760px) 100vw, 360px">{% endif %}
+    <h3>{{ g.data.title }}</h3>
+    <span class="d small">{{ g.data.place }}{% if g.data.place %} &middot; {% endif %}{{ g.date | year }}</span>
+  </a>
+{% endfor %}
+</div>
+{% else %}
+<p class="empty">The first galleries are on their way.</p>
+{% endif %}
+{% include "partials/follow.njk" %}

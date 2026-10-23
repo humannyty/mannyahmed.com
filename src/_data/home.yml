@@ -1,0 +1,37 @@
+tagline: I build a company, research distributed systems, write stories and take photographs. Not always in that order.
+roles: Founder · Researcher · Writer · Photographer · San Francisco
+lead: Four things, roughly equal parts. A company, a research problem, stories, and pictures.
+about: |-
+  I'm Manny. I founded OpenOrigins in London in 2021 and still run it. Before that I did a PhD in computer science at Cambridge with Ross Anderson, and the research from it keeps going: I'm a visiting researcher there now, working on the ideas behind the Cambium network.
+
+  Away from the desk I write fiction and poetry, and I take photographs. I live in San Francisco.
+
+openorigins:
+  kicker: Founder & CEO · Since 2021
+  big: Trust infrastructure for media and AI.
+  text: "OpenOrigins builds cryptographic provenance: a verifiable record of where a photo, a video, an archive or an AI agent's work came from, made at the source. I run it with my co-founder and President, Ari Abelson."
+  products:
+    - Secure Source
+    - Archive Anchor
+    - Data licensing
+    - Tally
+  link_label: openorigins.com
+  link: https://openorigins.com
+
+research:
+  kicker: Visiting researcher · Cambridge
+  big: How do lots of computers agree on what happened, fairly and quickly?
+  text: "My PhD at Cambridge, supervised by Ross Anderson, was on decentralised computer systems. Its consensus design became Cambium, the network OpenOrigins runs on. I still work on it. Also published as Mansoor Ahmed-Rengers."
+  scholar_url: ""
+
+writing:
+  kicker: Fiction · Poetry · Essays
+  big: Short fiction and poems, written slowly.
+
+photography:
+  kicker: Selected frames
+  big: ""
+
+contact:
+  heading: Say hello.
+  heading_em: A real one.

@@ -1,0 +1,165 @@
+# Pages CMS configuration: https://pagescms.org/docs
+# Log in at https://app.pagescms.org with GitHub and open this repo.
+
+media:
+  input: src/media
+  output: /media
+  categories: [image, document]
+
+content:
+  - name: writing
+    label: Writing
+    type: collection
+    path: src/writing/posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, kind, date, draft]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - name: kind
+        label: Kind
+        type: select
+        default: Essay
+        options:
+          values: [Essay, Blog post, Short story, Poem, Note]
+      - { name: summary, label: Summary, type: text, description: "One line. Shown on the writing page and in link previews." }
+      - { name: draft, label: Draft, type: boolean, default: true, description: "Drafts are saved but not published. Untick to publish." }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: photography
+    label: Photography
+    type: collection
+    path: src/photography/galleries
+    filename: "{primary}.md"
+    view:
+      fields: [title, place, date, draft]
+      primary: title
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Gallery title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: place, label: Place, type: string }
+      - { name: summary, label: Summary, type: text }
+      - { name: cover, label: Cover photo, type: image, description: "Optional. Defaults to the first photo." }
+      - { name: draft, label: Draft, type: boolean, default: true }
+      - name: photos
+        label: Photos
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image, required: true }
+          - { name: caption, label: Caption, type: string }
+          - { name: place, label: Place, type: string }
+          - { name: year, label: Year, type: string }
+          - { name: alt, label: Alt text, type: string, description: "Describe the photo for screen readers." }
+          - { name: featured, label: Show on homepage, type: boolean }
+      - { name: body, label: Notes (above the photos), type: rich-text }
+
+  - name: elsewhere
+    label: Elsewhere (social posts)
+    type: file
+    path: src/_data/elsewhere.yml
+    fields:
+      - name: posts
+        label: Posts
+        type: object
+        list: true
+        fields:
+          - name: platform
+            label: Platform
+            type: select
+            options:
+              values: [X, Instagram, LinkedIn, Bluesky, Threads, YouTube, Podcast, Other]
+          - { name: text, label: What it is, type: string, required: true }
+          - { name: url, label: Link, type: string, required: true }
+          - { name: date, label: Date, type: date }
+
+  - name: home
+    label: Homepage text
+    type: file
+    path: src/_data/home.yml
+    fields:
+      - { name: tagline, label: Hero line, type: text }
+      - { name: roles, label: Roles strip, type: string, description: "Separate with ' · '" }
+      - { name: lead, label: Intro (large), type: text }
+      - { name: about, label: About, type: text, description: "Blank line between paragraphs." }
+      - name: openorigins
+        label: OpenOrigins
+        type: object
+        fields:
+          - { name: kicker, type: string }
+          - { name: big, label: Headline, type: string }
+          - { name: text, type: text }
+          - { name: products, type: string, list: true }
+          - { name: link_label, label: Link label, type: string }
+          - { name: link, type: string }
+      - name: research
+        label: Research
+        type: object
+        fields:
+          - { name: kicker, type: string }
+          - { name: big, label: Headline, type: string }
+          - { name: text, type: text }
+          - { name: scholar_url, label: Google Scholar URL, type: string }
+      - name: writing
+        label: Writing
+        type: object
+        fields:
+          - { name: kicker, type: string }
+          - { name: big, label: Headline, type: string }
+      - name: photography
+        label: Photography
+        type: object
+        fields:
+          - { name: kicker, type: string }
+          - { name: big, label: Headline (optional), type: string }
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: heading, type: string }
+          - { name: heading_em, label: Heading (italic part), type: string }
+
+  - name: research
+    label: Papers
+    type: file
+    path: src/_data/research.yml
+    fields:
+      - name: papers
+        label: Papers
+        type: object
+        list: true
+        fields:
+          - { name: title, type: string, required: true }
+          - { name: venue, type: string }
+          - { name: year, type: string }
+          - { name: url, label: Link, type: string }
+
+  - name: site
+    label: Site settings & socials
+    type: file
+    path: src/_data/site.yml
+    fields:
+      - { name: title, type: string }
+      - { name: url, type: string }
+      - { name: description, type: text }
+      - { name: email, type: string }
+      - name: socials
+        label: Social profiles
+        type: object
+        list: true
+        description: "Shown in the contact section and at the end of every post and gallery. Leave the link empty to hide one."
+        fields:
+          - { name: label, label: Link text, type: string }
+          - { name: platform, type: string }
+          - { name: url, label: Link, type: string }
+      - { name: follow_prompt, label: Follow prompt, type: string }
+      - { name: footer_note, label: Footer note, type: string }
