@@ -1,0 +1,19 @@
+---
+layout: layouts/inner.njk
+title: Elsewhere
+kicker: Posts on other platforms
+sub: Threads, posts and talks that live somewhere else.
+permalink: /elsewhere/
+---
+{% set items = elsewhere.posts | byDateDesc %}
+<ul class="listing">
+{% for p in items %}
+  <li><a href="{{ p.url }}">
+    <span class="t">{{ p.text }}</span>
+    <span class="d small">{{ p.platform }}{% if p.date %} &middot; {{ p.date | readableDate }}{% endif %}</span>
+  </a></li>
+{% else %}
+  <li><p class="empty" style="border:0">Nothing here yet.</p></li>
+{% endfor %}
+</ul>
+{% include "partials/follow.njk" %}

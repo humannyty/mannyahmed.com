@@ -1,0 +1,24 @@
+title: Manny Ahmed
+url: https://mannyahmed.com
+description: Founder of OpenOrigins, distributed systems researcher, writer and photographer. San Francisco.
+email: hello@mannyahmed.com
+
+# Social profiles. Shown in the contact section and in the "follow" prompt at the
+# end of every post and gallery. Entries with an empty url are hidden.
+socials:
+  - label: "@hu_manny_ty"
+    platform: X
+    url: https://x.com/hu_manny_ty
+  - label: Instagram
+    platform: Instagram
+    url: ""
+  - label: LinkedIn
+    platform: LinkedIn
+    url: ""
+  - label: Google Scholar
+    platform: Google Scholar
+    url: ""
+
+# Shown at the end of posts and galleries, next to the social links.
+follow_prompt: More of this, as it happens.
+footer_note: Em dashes my own.

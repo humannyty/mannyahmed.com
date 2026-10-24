@@ -1,0 +1,9 @@
+# Links to individual posts on other platforms (threads, LinkedIn posts, talks,
+# interviews). Newest first is automatic. The homepage section only appears once
+# there's at least one entry. Example:
+#
+#  - platform: X
+#    text: A short line about what the post is
+#    url: https://x.com/hu_manny_ty/status/...
+#    date: 2026-10-20
+posts: []

@@ -1,0 +1,14 @@
+<section class="contact{% if slim %} slim{% endif %}" id="contact">
+  {% include "partials/contact-wash.njk" %}
+  <div class="wrap">
+    <h2>{{ home.contact.heading }} <em>{{ home.contact.heading_em }}</em></h2>
+    <div class="links">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {% include "partials/socials.njk" %}
+    </div>
+    <footer class="small">
+      <span>&copy; {{ build.year }} {{ site.title }}</span>
+      <span>{{ site.footer_note }}</span>
+    </footer>
+  </div>
+</section>

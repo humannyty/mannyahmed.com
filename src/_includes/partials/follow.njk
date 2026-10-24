@@ -1,0 +1,8 @@
+{% set _socials = site.socials | withUrl %}
+<div class="follow">
+  <p>{{ site.follow_prompt }}</p>
+  <div class="links small">
+    {% for s in _socials %}<a href="{{ s.url }}" rel="me">{{ s.platform }}</a>
+    {% endfor %}<a href="/feed.xml">RSS</a>
+  </div>
+</div>

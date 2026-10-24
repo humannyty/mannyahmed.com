@@ -1,0 +1,8 @@
+---
+layout: layouts/inner.njk
+---
+<a class="back small" href="/writing/">&larr; All writing</a>
+<article class="prose{% if kind == 'Poem' %} poem{% endif %}">
+{{ content | safe }}
+</article>
+{% include "partials/follow.njk" %}
