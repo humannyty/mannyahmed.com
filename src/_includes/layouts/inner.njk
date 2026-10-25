@@ -2,15 +2,8 @@
 layout: layouts/base.njk
 ---
 <header class="masthead">
-  <svg class="scene" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="1440" height="420" fill="url(#sky)"/>
-    <ellipse cx="1150" cy="120" rx="520" ry="160" fill="#e7c9b9" opacity=".55" filter="url(#wc2)"/>
-    <ellipse cx="300" cy="80" rx="460" ry="120" fill="#f4ede3" opacity=".7" filter="url(#wc2)"/>
-    <circle cx="1180" cy="300" r="130" fill="#e6c58f" opacity=".25" filter="url(#soft)"/>
-    <circle cx="1180" cy="300" r="62" fill="#ddb479" opacity=".5" filter="url(#wcs)"/>
-    <path d="M-60 390 C 240 360 520 400 820 380 C 1080 362 1260 385 1520 370 L1520 520 L-60 520Z" fill="#bcbdb9" opacity=".7" filter="url(#wc)"/>
-    <rect width="1440" height="420" filter="url(#grainf)" opacity=".9"/>
-  </svg>
+  {#- Pre-rendered from art/masthead.svg (scripts/render-art.mjs). -#}
+  <div class="scene" aria-hidden="true"></div>
   {% set inner = true %}{% include "partials/topbar.njk" %}
   <div class="head">
     {% if kicker %}<span class="small">{{ kicker }}</span>{% endif %}

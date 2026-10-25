@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<!-- Source artwork. The site uses the pre-rendered WebP in src/assets/ (see scripts/render-art.mjs),
+     because these full-width watercolour filters are too heavy for iPhone Safari to draw live.
+     The paper grain is a separate tile, art/grain.svg, laid over the image in CSS. -->
+  <defs>
+    <!-- watercolour edge: wobble + soft bleed -->
+    <filter id="wc" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.6" result="b"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="pig"/>
+      <feColorMatrix in="pig" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.25" result="pigA"/>
+      <feComposite in="b" in2="pigA" operator="in" result="mottled"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="mottled"/></feMerge>
+    </filter>
+    <filter id="wc2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="21" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="60" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="10"/>
+    </filter>
+    <filter id="edge" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2"/>
+    </filter>
+    <filter id="wcs" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="10" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.4"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="grainf">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0.22 0"/>
+    </filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe7dc"/>
+      <stop offset=".55" stop-color="#ecd9cc"/>
+      <stop offset="1" stop-color="#e3c3b4"/>
+    </linearGradient>
+  </defs>
+
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <!-- broad sky washes -->
+    <ellipse cx="1150" cy="220" rx="520" ry="200" fill="#e7c9b9" opacity=".55" filter="url(#wc2)"/>
+    <ellipse cx="300" cy="120" rx="460" ry="140" fill="#f4ede3" opacity=".7" filter="url(#wc2)"/>
+    <!-- sun -->
+    <circle cx="880" cy="490" r="190" fill="#e6c58f" opacity=".30" filter="url(#soft)"/>
+    <circle cx="880" cy="490" r="96" fill="#ddb479" opacity=".66" filter="url(#wcs)"/>
+    <circle cx="880" cy="490" r="96" fill="none" stroke="#b8864a" stroke-width="2.5" opacity=".3" filter="url(#wcs)"/>
+    <circle cx="862" cy="470" r="56" fill="#ead09e" opacity=".5" filter="url(#wc2)"/>
+    <!-- far range -->
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="#bcbdb9" opacity="1" filter="url(#wc)"/>
+    <path d="M-60 600 C 120 540 230 520 380 548 C 520 575 600 470 760 455 C 900 442 980 520 1120 505 C 1260 490 1360 440 1520 470 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- mid range -->
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="#b98d84" opacity=".72" filter="url(#wc)"/>
+    <path d="M-60 680 C 140 630 300 660 470 615 C 640 570 760 640 900 640 C 1060 640 1150 585 1290 600 C 1390 610 1450 640 1520 630 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <!-- near ground -->
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="#3c565c" opacity=".9" filter="url(#wc)"/>
+    <path d="M-60 760 C 160 720 360 765 560 735 C 760 705 900 760 1100 745 C 1260 733 1380 700 1520 715 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="#2a3f45" opacity=".85" filter="url(#wc)"/>
+    <path d="M-60 830 C 260 800 520 845 820 820 C 1080 800 1260 830 1520 812 L1520 1040 L-60 1040Z" fill="none" stroke="#3a3330" stroke-width="2.5" opacity=".14" filter="url(#edge)"/>
+
+    <!-- the thread: a chain of custody from a point of origin to the light -->
+    <g opacity=".9">
+      <path id="thread" d="M 612 732 C 720 650 820 580 872 446" fill="none" stroke="#f6efe3" stroke-width="1.1" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <circle cx="612" cy="732" r="4.2" fill="#f6efe3"/>
+      <circle cx="612" cy="732" r="11" fill="none" stroke="#f6efe3" stroke-width=".8" opacity=".7"/>
+    </g>
+    <rect y="860" width="1440" height="60" fill="#2a3f45"/>
+  </svg>

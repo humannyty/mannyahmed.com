@@ -27,6 +27,15 @@ Upload photos at roughly web size (around 2,500 px on the long edge). The build 
 
 On the homepage, the Photography section shows photos marked "Show on homepage". If none are marked, it shows the first photos of the newest galleries.
 
+## Background artwork
+
+The watercolour scenes behind the homepage header, page headers and contact section are drawn in `art/*.svg`, but the site shows pre-rendered images of them from `src/assets/`. Running those SVG filters live across a whole screen makes iPhone Safari show a blank page. If you edit anything in `art/`, re-render the images:
+
+```sh
+npm install --no-save playwright && npx playwright install webkit
+node scripts/render-art.mjs
+```
+
 ## Running locally
 
 ```sh

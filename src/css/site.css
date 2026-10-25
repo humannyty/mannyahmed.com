@@ -11,7 +11,9 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;height:100vh;min-height:720px;max-height:980px;overflow:hidden;background:#efe6da}
-.hero svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.hero .scene{position:absolute;inset:0;background:#efe6da url(/assets/hero.webp) center/cover no-repeat}
+/* paper grain over the pre-rendered scenes */
+.scene::after{content:"";position:absolute;inset:0;background:url(/assets/grain.png) 0 0/256px 256px;opacity:.9;pointer-events:none}
 .hero .grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55}
 .topbar{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:34px 56px;color:var(--ink);z-index:3}
 .topbar nav{display:flex;gap:30px}
@@ -62,7 +64,8 @@ h2 em{font-style:italic;color:var(--teal)}
 .personal p a{border-bottom:1px solid var(--rule)}
 
 .contact{position:relative;overflow:hidden;color:#f3eee6;background:var(--teal)}
-.contact svg{position:absolute;inset:0;width:100%;height:100%}
+.contact .scene{position:absolute;inset:0;background:var(--teal) url(/assets/contact.webp) center/cover no-repeat}
+.contact .scene::after{opacity:.6}
 .contact .wrap{position:relative;padding-top:110px;padding-bottom:60px}
 .contact h2{font-size:84px;max-width:900px}
 .contact h2 em{color:#e9cfa0}
@@ -162,7 +165,7 @@ picture{display:block}
 
 /* ---------- inner pages ---------- */
 .masthead{position:relative;overflow:hidden;background:#efe6da;border-bottom:1px solid var(--rule)}
-.masthead svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.masthead .scene{position:absolute;inset:0;background:#efe6da url(/assets/masthead.webp) center/cover no-repeat}
 .masthead .topbar{position:relative}
 .masthead .topbar a.home{opacity:1}
 .masthead .head{position:relative;z-index:2;padding:60px 56px 70px;max-width:1180px;margin:0 auto}

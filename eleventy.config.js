@@ -26,6 +26,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/assets"); // pre-rendered artwork, see scripts/render-art.mjs
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy({ "src/media/files": "files" }); // PDFs etc., not photos
 
